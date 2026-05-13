@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 160" width="900" height="160">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#020c18"/>
+      <stop offset="100%" style="stop-color:#030d1a"/>
+    </linearGradient>
+    <filter id="glow2">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid2" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#0a2540" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <rect width="900" height="160" fill="url(#bg2)"/>
+  <rect width="900" height="160" fill="url(#grid2)" opacity="0.5"/>
+
+  <!-- Frame lines -->
+  <line x1="0" y1="0" x2="900" y2="0" stroke="#00d4ff" stroke-width="1.5" opacity="0.6" filter="url(#glow2)"/>
+  <line x1="0" y1="159" x2="900" y2="159" stroke="#00d4ff" stroke-width="1" opacity="0.3"/>
+
+  <!-- Corner brackets -->
+  <path d="M 0 20 L 0 0 L 30 0" fill="none" stroke="#00d4ff" stroke-width="1.5" opacity="0.7"/>
+  <path d="M 900 20 L 900 0 L 870 0" fill="none" stroke="#00d4ff" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Title -->
+  <text x="30" y="30" font-family="'Courier New', monospace" font-size="9" fill="#00d4ff" letter-spacing="4" opacity="0.7">TECH MODULES · LOADED</text>
+  <line x1="30" y1="36" x2="870" y2="36" stroke="#0a3050" stroke-width="1"/>
+
+  <!-- ── SKILL BARS ── -->
+  <!-- Col 1 -->
+  <g transform="translate(30, 52)">
+    <!-- Next.js -->
+    <text x="0" y="12" font-family="'Courier New', monospace" font-size="10" fill="#e0e0e0">Next.js 15</text>
+    <rect x="100" y="2" width="140" height="10" fill="#020c18" stroke="#0a2540" stroke-width="1" rx="1"/>
+    <rect x="100" y="2" width="0" height="10" fill="#00d4ff" rx="1" opacity="0.85">
+      <animate attributeName="width" from="0" to="133" dur="1s" begin="0.3s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    </rect>
+    <text x="248" y="12" font-family="'Courier New', monospace" font-size="9" fill="#00d4ff">95%</text>
+
+    <!-- Python -->
+    <text x="0" y="34" font-family="'Courier New', monospace" font-size="10" fill="#e0e0e0">Python</text>
+    <rect x="100" y="24" width="140" height="10" fill="#020c18" stroke="#0a2540" stroke-width="1" rx="1"/>
+    <rect x="100" y="24" width="0" height="10" fill="#00ff9d" rx="1" opacity="0.85">
+      <animate attributeName="width" from="0" to="119" dur="1s" begin="0.5s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    </rect>
+    <text x="248" y="34" font-family="'Courier New', monospace" font-size="9" fill="#00ff9d">85%</text>
+
+    <!-- TypeScript -->
+    <text x="0" y="56" font-family="'Courier New', monospace" font-size="10" fill="#e0e0e0">TypeScript</text>
+    <rect x="100" y="46" width="140" height="10" fill="#020c18" stroke="#0a2540" stroke-width="1" rx="1"/>
+    <rect x="100" y="46" width="0" height="10" fill="#4a9eff" rx="1" opacity="0.85">
+      <animate attributeName="width" from="0" to="112" dur="1s" begin="0.7s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    </rect>
+    <text x="248" y="56" font-family="'Courier New', monospace" font-size="9" fill="#4a9eff">80%</text>
+
+    <!-- OpenCV -->
+    <text x="0" y="78" font-family="'Courier New', monospace" font-size="10" fill="#e0e0e0">OpenCV / CV</text>
+    <rect x="100" y="68" width="140" height="10" fill="#020c18" stroke="#0a2540" stroke-width="1" rx="1"/>
+    <rect x="100" y="68" width="0" height="10" fill="#00d4ff" rx="1" opacity="0.85">
+      <animate attributeName="width" from="0" to="105" dur="1s" begin="0.9s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    </rect>
+    <text x="248" y="78" font-family="'Courier New', monospace" font-size="9" fill="#00d4ff">75%</text>
+  </g>
+
+  <!-- Divider -->
+  <line x1="320" y1="42" x2="320" y2="148" stroke="#0a2540" stroke-width="1"/>
+
+  <!-- Col 2 -->
+  <g transform="translate(340, 52)">
+    <text x="0" y="12" font-family="'Courier New', monospace" font-size="10" fill="#e0e0e0">React / Tailwind</text>
+    <rect x="130" y="2" width="140" height="10" fill="#020c18" stroke="#0a2540" stroke-width="1" rx="1"/>
+    <rect x="130" y="2" width="0" height="10" fill="#00ff9d" rx="1" opacity="0.85">
+      <animate attributeName="width" from="0" to="126" dur="1s" begin="0.4s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    </rect>
+    <text x="278" y="12" font-family="'Courier New', monospace" font-size="9" fill="#00ff9d">90%</text>
+
+    <text x="0" y="34" font-family="'Courier New', monospace" font-size="10" fill="#e0e0e0">MongoDB / SQL</text>
+    <rect x="130" y="24" width="140" height="10" fill="#020c18" stroke="#0a2540" stroke-width="1" rx="1"/>
+    <rect x="130" y="24" width="0" height="10" fill="#4a9eff" rx="1" opacity="0.85">
+      <animate attributeName="width" from="0" to="112" dur="1s" begin="0.6s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    </rect>
+    <text x="278" y="34" font-family="'Courier New', monospace" font-size="9" fill="#4a9eff">80%</text>
+
+    <text x="0" y="56" font-family="'Courier New', monospace" font-size="10" fill="#e0e0e0">Supabase / BaaS</text>
+    <rect x="130" y="46" width="140" height="10" fill="#020c18" stroke="#0a2540" stroke-width="1" rx="1"/>
+    <rect x="130" y="46" width="0" height="10" fill="#00d4ff" rx="1" opacity="0.85">
+      <animate attributeName="width" from="0" to="105" dur="1s" begin="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    </rect>
+    <text x="278" y="56" font-family="'Courier New', monospace" font-size="9" fill="#00d4ff">75%</text>
+
+    <text x="0" y="78" font-family="'Courier New', monospace" font-size="10" fill="#e0e0e0">AI/ML (Gemini/PT)</text>
+    <rect x="130" y="68" width="140" height="10" fill="#020c18" stroke="#0a2540" stroke-width="1" rx="1"/>
+    <rect x="130" y="68" width="0" height="10" fill="#00ff9d" rx="1" opacity="0.85">
+      <animate attributeName="width" from="0" to="98" dur="1s" begin="1.0s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+    </rect>
+    <text x="278" y="78" font-family="'Courier New', monospace" font-size="9" fill="#00ff9d">70%</text>
+  </g>
+
+  <!-- Divider -->
+  <line x1="645" y1="42" x2="645" y2="148" stroke="#0a2540" stroke-width="1"/>
+
+  <!-- Col 3: Tags / Chips -->
+  <g transform="translate(665, 50)">
+    <text x="0" y="0" font-family="'Courier New', monospace" font-size="8.5" fill="#5a7a8a" letter-spacing="2">TOOLS · ENVIRONMENT</text>
+
+    <!-- chip row 1 -->
+    <g transform="translate(0,14)">
+      <rect width="62" height="18" rx="9" fill="#001829" stroke="#00d4ff" stroke-width="1" opacity="0.8"/>
+      <text x="31" y="13" font-family="'Courier New', monospace" font-size="9" fill="#00d4ff" text-anchor="middle">Git</text>
+
+      <rect x="70" width="72" height="18" rx="9" fill="#001829" stroke="#00ff9d" stroke-width="1" opacity="0.8"/>
+      <text x="106" y="13" font-family="'Courier New', monospace" font-size="9" fill="#00ff9d" text-anchor="middle">VS Code</text>
+
+      <rect x="150" width="64" height="18" rx="9" fill="#001829" stroke="#4a9eff" stroke-width="1" opacity="0.8"/>
+      <text x="182" y="13" font-family="'Courier New', monospace" font-size="9" fill="#4a9eff" text-anchor="middle">Kaggle</text>
+    </g>
+
+    <!-- chip row 2 -->
+    <g transform="translate(0,40)">
+      <rect width="70" height="18" rx="9" fill="#001829" stroke="#00ff9d" stroke-width="1" opacity="0.8"/>
+      <text x="35" y="13" font-family="'Courier New', monospace" font-size="9" fill="#00ff9d" text-anchor="middle">Vercel</text>
+
+      <rect x="78" width="76" height="18" rx="9" fill="#001829" stroke="#00d4ff" stroke-width="1" opacity="0.8"/>
+      <text x="116" y="13" font-family="'Courier New', monospace" font-size="9" fill="#00d4ff" text-anchor="middle">Netlify</text>
+
+      <rect x="162" width="56" height="18" rx="9" fill="#001829" stroke="#4a9eff" stroke-width="1" opacity="0.8"/>
+      <text x="190" y="13" font-family="'Courier New', monospace" font-size="9" fill="#4a9eff" text-anchor="middle">Figma</text>
+    </g>
+
+    <!-- chip row 3 -->
+    <g transform="translate(0,66)">
+      <rect width="82" height="18" rx="9" fill="#001829" stroke="#00d4ff" stroke-width="1" opacity="0.8"/>
+      <text x="41" y="13" font-family="'Courier New', monospace" font-size="9" fill="#00d4ff" text-anchor="middle">MediaPipe</text>
+
+      <rect x="90" width="68" height="18" rx="9" fill="#001829" stroke="#00ff9d" stroke-width="1" opacity="0.8"/>
+      <text x="124" y="13" font-family="'Courier New', monospace" font-size="9" fill="#00ff9d" text-anchor="middle">Postman</text>
+
+      <rect x="166" width="52" height="18" rx="9" fill="#001829" stroke="#4a9eff" stroke-width="1" opacity="0.8"/>
+      <text x="192" y="13" font-family="'Courier New', monospace" font-size="9" fill="#4a9eff" text-anchor="middle">Conda</text>
+    </g>
+  </g>
+</svg>

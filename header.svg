@@ -1,0 +1,357 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 280" width="900" height="280">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#020c18;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#030d1a;stop-opacity:1"/>
+    </linearGradient>
+
+    <!-- Arc reactor glow -->
+    <radialGradient id="arcGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:0.9"/>
+      <stop offset="40%" style="stop-color:#0088cc;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#001122;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- Right panel glow -->
+    <radialGradient id="rightGlow" cx="80%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#00ff9d;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- HUD line glow filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="glowStrong" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="glowText" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Scan line mask -->
+    <clipPath id="scanReveal">
+      <rect x="0" y="0" width="900" height="280">
+        <animate attributeName="height" from="0" to="280" dur="1.2s" begin="0.3s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+      </rect>
+    </clipPath>
+
+    <!-- Name reveal clip -->
+    <clipPath id="nameReveal">
+      <rect x="0" y="0" width="0" height="80">
+        <animate attributeName="width" from="0" to="540" dur="1.4s" begin="1.0s" fill="freeze" calcMode="spline" keySplines="0.22 1 0.36 1"/>
+      </rect>
+    </clipPath>
+
+    <!-- Subtitle reveal clip -->
+    <clipPath id="subReveal">
+      <rect x="0" y="0" width="0" height="40">
+        <animate attributeName="width" from="0" to="480" dur="1.2s" begin="2.0s" fill="freeze" calcMode="spline" keySplines="0.22 1 0.36 1"/>
+      </rect>
+    </clipPath>
+
+    <!-- Grid pattern -->
+    <pattern id="gridPattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#0a2540" stroke-width="0.5"/>
+    </pattern>
+
+    <!-- Hexagon clip for arc reactor -->
+    <clipPath id="hexClip">
+      <polygon points="62,30 88,30 102,54 88,78 62,78 48,54"/>
+    </clipPath>
+  </defs>
+
+  <!-- Base background -->
+  <rect width="900" height="280" fill="url(#bg)"/>
+
+  <!-- Grid overlay -->
+  <rect width="900" height="280" fill="url(#gridPattern)" opacity="0.6"/>
+
+  <!-- Ambient glows -->
+  <ellipse cx="130" cy="140" rx="160" ry="140" fill="url(#arcGlow)" opacity="0.4">
+    <animate attributeName="opacity" values="0.3;0.55;0.3" dur="4s" repeatCount="indefinite"/>
+  </ellipse>
+  <rect width="900" height="280" fill="url(#rightGlow)"/>
+
+  <!-- Scan line sweep effect (initial load) -->
+  <rect width="900" height="3" fill="#00d4ff" opacity="0">
+    <animate attributeName="y" from="-3" to="283" dur="1.0s" begin="0.2s" fill="freeze"/>
+    <animate attributeName="opacity" values="0;0.7;0.7;0" keyTimes="0;0.1;0.9;1" dur="1.0s" begin="0.2s" fill="freeze"/>
+  </rect>
+
+  <!-- ═══════════ LEFT PANEL: ARC REACTOR ═══════════ -->
+  <g transform="translate(75, 140)" clip-path="url(#scanReveal)">
+
+    <!-- Outer ring -->
+    <circle cx="0" cy="0" r="55" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.3" filter="url(#glow)">
+      <animate attributeName="r" values="53;57;53" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;0.5;0.2" dur="3s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Rotating ring 1 -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="8s" repeatCount="indefinite"/>
+      <circle cx="0" cy="0" r="46" fill="none" stroke="#00aadd" stroke-width="0.8" stroke-dasharray="12 6" opacity="0.6"/>
+    </g>
+
+    <!-- Rotating ring 2 (counter) -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate" from="0" to="-360" dur="5s" repeatCount="indefinite"/>
+      <circle cx="0" cy="0" r="38" fill="none" stroke="#00ff9d" stroke-width="0.8" stroke-dasharray="8 10" opacity="0.5"/>
+    </g>
+
+    <!-- Triangle segments (Iron Man arc reactor shape) -->
+    <g opacity="0.8" filter="url(#glow)">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="12s" repeatCount="indefinite"/>
+      <!-- 6 trapezoid segments -->
+      <line x1="0" y1="-28" x2="0" y2="-18" stroke="#00d4ff" stroke-width="3"/>
+      <line x1="0" y1="-28" x2="0" y2="-18" stroke="#00d4ff" stroke-width="3" transform="rotate(60)"/>
+      <line x1="0" y1="-28" x2="0" y2="-18" stroke="#00d4ff" stroke-width="3" transform="rotate(120)"/>
+      <line x1="0" y1="-28" x2="0" y2="-18" stroke="#00d4ff" stroke-width="3" transform="rotate(180)"/>
+      <line x1="0" y1="-28" x2="0" y2="-18" stroke="#00d4ff" stroke-width="3" transform="rotate(240)"/>
+      <line x1="0" y1="-28" x2="0" y2="-18" stroke="#00d4ff" stroke-width="3" transform="rotate(300)"/>
+    </g>
+
+    <!-- Center core -->
+    <circle cx="0" cy="0" r="14" fill="#001829" stroke="#00d4ff" stroke-width="1.5" filter="url(#glowStrong)">
+      <animate attributeName="r" values="13;15;13" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="0" cy="0" r="8" fill="#00d4ff" opacity="0.9" filter="url(#glowStrong)">
+      <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="7;9;7" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="0" cy="0" r="3" fill="white" opacity="0.95"/>
+
+    <!-- Pulse rings emanating outward -->
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0">
+      <animate attributeName="r" values="14;70" dur="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#00d4ff" stroke-width="0.8" opacity="0">
+      <animate attributeName="r" values="14;70" dur="2.5s" begin="0.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0" dur="2.5s" begin="0.8s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- ═══════════ CENTER: NAME + TITLE ═══════════ -->
+
+  <!-- HUD corner brackets — top left of name area -->
+  <g filter="url(#glow)" clip-path="url(#scanReveal)">
+    <!-- TL bracket -->
+    <path d="M 165 70 L 165 58 L 185 58" fill="none" stroke="#00d4ff" stroke-width="1.8" opacity="0.9">
+      <animate attributeName="opacity" values="0;1" dur="0.3s" begin="0.8s" fill="freeze"/>
+    </path>
+    <!-- TR bracket -->
+    <path d="M 620 70 L 620 58 L 600 58" fill="none" stroke="#00d4ff" stroke-width="1.8" opacity="0.9">
+      <animate attributeName="opacity" values="0;1" dur="0.3s" begin="0.9s" fill="freeze"/>
+    </path>
+    <!-- BL bracket -->
+    <path d="M 165 175 L 165 187 L 185 187" fill="none" stroke="#00d4ff" stroke-width="1.8" opacity="0.9">
+      <animate attributeName="opacity" values="0;1" dur="0.3s" begin="1.0s" fill="freeze"/>
+    </path>
+    <!-- BR bracket -->
+    <path d="M 620 175 L 620 187 L 600 187" fill="none" stroke="#00d4ff" stroke-width="1.8" opacity="0.9">
+      <animate attributeName="opacity" values="0;1" dur="0.3s" begin="1.0s" fill="freeze"/>
+    </path>
+  </g>
+
+  <!-- DESIGNATION label -->
+  <text x="168" y="76" font-family="'Courier New', monospace" font-size="9" fill="#00ff9d" letter-spacing="4" opacity="0">
+    ENGINEER · ID:YPK-2026
+    <animate attributeName="opacity" values="0;0.8" dur="0.4s" begin="0.9s" fill="freeze"/>
+  </text>
+
+  <!-- MAIN NAME — large, cinematic, glowing -->
+  <g clip-path="url(#nameReveal)" filter="url(#glowText)">
+    <text x="168" y="148" font-family="'Courier New', monospace" font-size="58" font-weight="700"
+          fill="#ffffff" letter-spacing="2" opacity="0.95">
+      YASH PATEL
+    </text>
+  </g>
+  <!-- Name glow layer -->
+  <g clip-path="url(#nameReveal)">
+    <text x="168" y="148" font-family="'Courier New', monospace" font-size="58" font-weight="700"
+          fill="none" stroke="#00d4ff" stroke-width="0.5" letter-spacing="2" opacity="0.5">
+      YASH PATEL
+    </text>
+  </g>
+
+  <!-- Cursor blink after name reveal -->
+  <rect x="588" y="100" width="4" height="48" fill="#00d4ff" opacity="0">
+    <animate attributeName="opacity" values="0;0" dur="2.5s" begin="0s" fill="freeze"/>
+    <animate attributeName="opacity" values="1;0;1;0;1;0" keyTimes="0;0.2;0.4;0.6;0.8;1" dur="1.2s" begin="2.4s" repeatCount="3"/>
+  </rect>
+
+  <!-- Subtitle -->
+  <g clip-path="url(#subReveal)">
+    <text x="168" y="175" font-family="'Courier New', monospace" font-size="13.5" fill="#00d4ff"
+          letter-spacing="3.5" opacity="0.9">
+      FULL-STACK · COMPUTER VISION · AI/ML
+    </text>
+  </g>
+
+  <!-- Bottom status bar -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;1" dur="0.5s" begin="2.8s" fill="freeze"/>
+
+    <!-- status line -->
+    <line x1="168" y1="196" x2="640" y2="196" stroke="#0a3050" stroke-width="1"/>
+
+    <text x="168" y="212" font-family="'Courier New', monospace" font-size="10" fill="#00ff9d" letter-spacing="2" opacity="0.7">
+      ◈ MBIT / CVM UNIVERSITY
+    </text>
+    <text x="340" y="212" font-family="'Courier New', monospace" font-size="10" fill="#00aadd" letter-spacing="2" opacity="0.7">
+      ◈ 3RD YEAR · B.TECH IT
+    </text>
+    <text x="530" y="212" font-family="'Courier New', monospace" font-size="10" fill="#00ff9d" letter-spacing="2" opacity="0.7">
+      ◈ GUJARAT, IN
+    </text>
+  </g>
+
+  <!-- ═══════════ RIGHT PANEL: HUD DATA ═══════════ -->
+  <g transform="translate(660, 50)" clip-path="url(#scanReveal)">
+
+    <!-- Panel border -->
+    <rect x="0" y="0" width="220" height="190" fill="#020d1c" stroke="#0a2d4a" stroke-width="1" rx="2" opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.4s" begin="1.8s" fill="freeze"/>
+    </rect>
+
+    <!-- Top accent bar -->
+    <rect x="0" y="0" width="220" height="3" fill="#00d4ff" rx="1" opacity="0">
+      <animate attributeName="opacity" values="0;0.8" dur="0.4s" begin="1.8s" fill="freeze"/>
+    </rect>
+
+    <!-- Panel title -->
+    <text x="10" y="20" font-family="'Courier New', monospace" font-size="8.5" fill="#00d4ff"
+          letter-spacing="3" opacity="0">
+      SYSTEM INTEL
+      <animate attributeName="opacity" values="0;0.7" dur="0.3s" begin="2.0s" fill="freeze"/>
+    </text>
+
+    <line x1="10" y1="26" x2="210" y2="26" stroke="#0a3050" stroke-width="1" opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.3s" begin="2.0s" fill="freeze"/>
+    </line>
+
+    <!-- Stat rows -->
+    <!-- Row: GitHub -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.3s" begin="2.1s" fill="freeze"/>
+      <text x="10" y="46" font-family="'Courier New', monospace" font-size="8" fill="#5a7a8a" letter-spacing="1">PLATFORM</text>
+      <text x="110" y="46" font-family="'Courier New', monospace" font-size="9" fill="#00ff9d" letter-spacing="1">github.com/Deadpool20x</text>
+    </g>
+
+    <!-- Row: Stack -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.3s" begin="2.2s" fill="freeze"/>
+      <text x="10" y="62" font-family="'Courier New', monospace" font-size="8" fill="#5a7a8a" letter-spacing="1">STACK</text>
+      <text x="110" y="62" font-family="'Courier New', monospace" font-size="9" fill="#00d4ff" letter-spacing="1">Next.js · Supabase · CV</text>
+    </g>
+
+    <!-- Row: Focus -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.3s" begin="2.3s" fill="freeze"/>
+      <text x="10" y="78" font-family="'Courier New', monospace" font-size="8" fill="#5a7a8a" letter-spacing="1">FOCUS</text>
+      <text x="110" y="78" font-family="'Courier New', monospace" font-size="9" fill="#00d4ff" letter-spacing="1">RAG · EfficientNet · PWA</text>
+    </g>
+
+    <line x1="10" y1="88" x2="210" y2="88" stroke="#0a3050" stroke-width="1" opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.3s" begin="2.3s" fill="freeze"/>
+    </line>
+
+    <!-- Active projects label -->
+    <text x="10" y="103" font-family="'Courier New', monospace" font-size="8" fill="#00d4ff"
+          letter-spacing="3" opacity="0">
+      ACTIVE MISSIONS
+      <animate attributeName="opacity" values="0;0.7" dur="0.3s" begin="2.4s" fill="freeze"/>
+    </text>
+
+    <!-- Mission 1 -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.3s" begin="2.5s" fill="freeze"/>
+      <circle cx="16" cy="117" r="3" fill="#00ff9d">
+        <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite"/>
+      </circle>
+      <text x="26" y="120" font-family="'Courier New', monospace" font-size="9" fill="#e0e0e0" letter-spacing="0.5">BharatHire AI</text>
+      <text x="150" y="120" font-family="'Courier New', monospace" font-size="8" fill="#00ff9d">LIVE</text>
+    </g>
+
+    <!-- Mission 2 -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.3s" begin="2.6s" fill="freeze"/>
+      <circle cx="16" cy="134" r="3" fill="#00d4ff">
+        <animate attributeName="opacity" values="1;0.3;1" dur="2.0s" begin="0.5s" repeatCount="indefinite"/>
+      </circle>
+      <text x="26" y="137" font-family="'Courier New', monospace" font-size="9" fill="#e0e0e0" letter-spacing="0.5">EmotiScan Pro v2</text>
+      <text x="150" y="137" font-family="'Courier New', monospace" font-size="8" fill="#00aadd">TRAIN</text>
+    </g>
+
+    <!-- Mission 3 -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" dur="0.3s" begin="2.7s" fill="freeze"/>
+      <circle cx="16" cy="151" r="3" fill="#4a9eff">
+        <animate attributeName="opacity" values="1;0.3;1" dur="2.5s" begin="1s" repeatCount="indefinite"/>
+      </circle>
+      <text x="26" y="154" font-family="'Courier New', monospace" font-size="9" fill="#e0e0e0" letter-spacing="0.5">CivicPulse</text>
+      <text x="150" y="154" font-family="'Courier New', monospace" font-size="8" fill="#4a9eff">STABLE</text>
+    </g>
+
+    <!-- Bottom bar -->
+    <rect x="0" y="187" width="220" height="3" fill="#00ff9d" rx="1" opacity="0">
+      <animate attributeName="opacity" values="0;0.5" dur="0.4s" begin="2.8s" fill="freeze"/>
+      <animate attributeName="width" values="0;220" dur="0.6s" begin="2.8s" fill="freeze"/>
+    </rect>
+
+  </g>
+
+  <!-- ═══════════ DECORATIVE ELEMENTS ═══════════ -->
+
+  <!-- Top left corner bracket (overall frame) -->
+  <g filter="url(#glow)" clip-path="url(#scanReveal)">
+    <path d="M 0 30 L 0 0 L 40 0" fill="none" stroke="#00d4ff" stroke-width="2" opacity="0.7"/>
+    <path d="M 900 30 L 900 0 L 860 0" fill="none" stroke="#00d4ff" stroke-width="2" opacity="0.4"/>
+    <path d="M 0 250 L 0 280 L 40 280" fill="none" stroke="#00d4ff" stroke-width="2" opacity="0.4"/>
+    <path d="M 900 250 L 900 280 L 860 280" fill="none" stroke="#00d4ff" stroke-width="2" opacity="0.3"/>
+  </g>
+
+  <!-- Horizontal accent lines -->
+  <line x1="0" y1="0" x2="900" y2="0" stroke="#00d4ff" stroke-width="1.5" opacity="0.6" filter="url(#glow)"/>
+  <line x1="0" y1="279" x2="900" y2="279" stroke="#00d4ff" stroke-width="1" opacity="0.3" filter="url(#glow)"/>
+
+  <!-- Divider line between arc and name -->
+  <line x1="148" y1="50" x2="148" y2="230" stroke="#0a2540" stroke-width="1" opacity="0.8" clip-path="url(#scanReveal)"/>
+
+  <!-- Divider line between name and right panel -->
+  <line x1="648" y1="50" x2="648" y2="230" stroke="#0a2540" stroke-width="1" opacity="0.8" clip-path="url(#scanReveal)"/>
+
+  <!-- Floating data particles (subtle) -->
+  <g opacity="0.35" clip-path="url(#scanReveal)">
+    <circle cx="640" cy="30" r="1.5" fill="#00d4ff">
+      <animate attributeName="opacity" values="0;1;0" dur="3s" begin="0s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="655" cy="245" r="1" fill="#00ff9d">
+      <animate attributeName="opacity" values="0;1;0" dur="2.5s" begin="1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="150" cy="240" r="1.5" fill="#00d4ff">
+      <animate attributeName="opacity" values="0;1;0" dur="4s" begin="0.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="155" cy="35" r="1" fill="#00ff9d">
+      <animate attributeName="opacity" values="0;1;0" dur="3.5s" begin="1.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+</svg>
